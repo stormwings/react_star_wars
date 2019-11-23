@@ -17,21 +17,8 @@ export default function(state = INITIAL_STATE, action: any) {
     case types.CHARACTER_LOADING: {
       return { ...state, loading: true };
     }
-    case types.CHARACTERS_FETCH_SUCCESSFUL: {
-      const {
-        data: { characters }
-      } = action.payload;
-
-      return {
-        ...state,
-        characters,
-        loading: false
-      };
-    }
     case types.CHARACTER_FETCH_SUCCESSFUL: {
-      const {
-        data: { character }
-      } = action.payload;
+      const { character } = action.payload;
 
       return {
         ...state,
@@ -39,7 +26,16 @@ export default function(state = INITIAL_STATE, action: any) {
         loading: false
       };
     }
+    case types.CHARACTERS_FETCH_SUCCESSFUL: {
+      const { characters } = action.payload;
+
+      return {
+        ...state,
+        characters,
+        loading: false
+      };
+    }
     default:
-      return state;
+      return { ...state };
   }
 }

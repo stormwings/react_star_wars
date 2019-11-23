@@ -18,9 +18,7 @@ export default function(state = INITIAL_STATE, action: any) {
       return { ...state, loading: true };
     }
     case types.MOVIES_FETCH_SUCCESSFUL: {
-      const {
-        data: { movies }
-      } = action.payload;
+      const { movies } = action.payload;
 
       return {
         ...state,
@@ -29,9 +27,7 @@ export default function(state = INITIAL_STATE, action: any) {
       };
     }
     case types.MOVIE_FETCH_SUCCESSFUL: {
-      const {
-        data: { movie }
-      } = action.payload;
+      const { movie } = action.payload;
 
       return {
         ...state,
@@ -40,6 +36,6 @@ export default function(state = INITIAL_STATE, action: any) {
       };
     }
     default:
-      return state;
+      return { ...state };
   }
 }
