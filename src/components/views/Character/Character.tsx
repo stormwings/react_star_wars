@@ -1,27 +1,25 @@
 import React from 'react';
-import { List, ListItemIcon, ListItemText, Card, CardContent, Typography, Paper } from '@material-ui/core';
+import { List, ListItemIcon, ListItemText, Card, CardContent, Typography, Paper, Grid } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import PersonIcon from '@material-ui/icons/Person';
-
-const drawerWidth = 240;
+import Layout from '../Layout/Layout';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
-      justifyContent: 'space-around',
-      height: '500px'
+      height: '500px',
+      margin: '10px'
+      // flexGrow: 1
     },
     middle: {
       marginTop: '10px',
-      width: '49%',
+      // width: '49%',
       backgroundColor: theme.palette.background.paper
     },
     toolbar: theme.mixins.toolbar,
     content: {
-      flexGrow: 1,
-      marginLeft: drawerWidth
+      flexGrow: 1
     },
     selectable: {
       color: '#3F51B5',
@@ -44,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: 12
     },
     paper: {
-      maxHeight: '100%',
+      maxHeight: '255px',
       overflow: 'auto',
       boxShadow: 'none'
     }
@@ -56,49 +54,185 @@ export default function Character() {
   const bull = <span className={classes.bullet}>• </span>;
 
   return (
-    <main className={classes.content}>
-      <div className={classes.toolbar} />
-      <div className={classes.root}>
-        <div className={classes.middle}>
-          <Paper className={classes.paper}>
-            <List component="nav" aria-label="main mailbox folders">
-              <ListItem button>
-                <ListItemIcon>
-                  <PersonIcon />
-                </ListItemIcon>
-                <ListItemText primary="Character" />
-              </ListItem>
-            </List>
-          </Paper>
+    <Layout>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        <div className={classes.root}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={12} md={6}>
+              <Paper className={classes.paper}>
+                <List component="nav" aria-label="main mailbox folders">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <PersonIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Character" />
+                  </ListItem>
+                </List>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={12} md={6}>
+              <Paper className={classes.paper}>
+                <Card className={classes.card}>
+                  <CardContent>
+                    <Typography variant="h5" component="h2">
+                      Nombre: C3PO
+                    </Typography>
+                    <br />
+                    <Typography className={classes.pos} color="textSecondary">
+                      Color de ojos: Amarillo
+                    </Typography>
+                    <Typography className={classes.pos} color="textSecondary">
+                      Altura: 167 cm
+                    </Typography>
+                    <Typography className={classes.pos} color="textSecondary">
+                      Peso: 75 kg
+                    </Typography>
+                    <Typography className={classes.pos} color="textSecondary">
+                      Peliculas en las que apareció:
+                    </Typography>
+                    <Typography className={classes.selectable} variant="body2" component="p">
+                      {bull} A New Hope
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Paper>
+            </Grid>
+          </Grid>
         </div>
-        <div className={classes.middle}>
-          <Paper className={classes.paper}>
-            <Card className={classes.card}>
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                  Nombre: C3PO
-                </Typography>
-                <br />
-                <Typography className={classes.pos} color="textSecondary">
-                  Color de ojos: Amarillo
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  Altura: 167 cm
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  Peso: 75 kg
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  Peliculas en las que apareció:
-                </Typography>
-                <Typography className={classes.selectable} variant="body2" component="p">
-                  {bull} A New Hope
-                </Typography>
-              </CardContent>
-            </Card>
-          </Paper>
-        </div>
-      </div>
-    </main>
+      </main>
+    </Layout>
   );
 }

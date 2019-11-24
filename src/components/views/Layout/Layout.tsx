@@ -17,6 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
+import Character from '../Character/Character';
 
 const drawerWidth = 240;
 
@@ -56,9 +57,10 @@ interface ResponsiveDrawerProps {
    * You won't need it on your project.
    */
   container?: Element;
+  children: any;
 }
 
-export default function Navbar(props: ResponsiveDrawerProps) {
+export default function Layout(props: ResponsiveDrawerProps) {
   let history = useHistory();
   const { container } = props;
   const classes = useStyles();
@@ -138,6 +140,7 @@ export default function Navbar(props: ResponsiveDrawerProps) {
           </Drawer>
         </Hidden>
       </nav>
+      {props.children}
     </div>
   );
 }

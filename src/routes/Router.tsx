@@ -4,12 +4,10 @@ import { BrowserRouter, Route, Switch, BrowserRouterProps } from 'react-router-d
 import { NoMatch } from '../components/dumb/NoMatch/NoMatch';
 import Character from '../components/views/Character/Character';
 import Movie from '../components/views/Movie/Movie';
-import Navbar from '../components/views/Navbar/Navbar';
 
 const Router: FunctionComponent<BrowserRouterProps> = () => (
   <Fragment>
     <BrowserRouter>
-      <Navbar />
       <Switch>
         <Route exact path="/character" component={Character} />
         {/* <Route exact path="/character/:id" component={Character} /> */}
