@@ -17,7 +17,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
-import Character from '../Character/Character';
 
 const drawerWidth = 240;
 
