@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   loading: false,
   characters: null as any,
   character: null as any,
+  nextPage: '',
   message: '',
   error: ''
 };
@@ -27,11 +28,23 @@ export default function(state = INITIAL_STATE, action: any) {
       };
     }
     case types.CHARACTERS_FETCH_SUCCESSFUL: {
-      const { characters } = action.payload;
+      const { characters, nextPage } = action.payload;
 
       return {
         ...state,
         characters,
+        nextPage,
+        loading: false
+      };
+    }
+    case types.GET_ADD_TO_CHARACTERS_FETCH_SUCCESSFUL: {
+      const { characters, nextPage } = action.payload;
+      const sumCharacters = [...state.characters, ...characters];
+
+      return {
+        ...state,
+        characters: sumCharacters,
+        nextPage,
         loading: false
       };
     }
