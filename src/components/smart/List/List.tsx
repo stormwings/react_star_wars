@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useEffect, useState, useRef } from 'react';
-import { List, ListItemIcon, ListItemText, Paper } from '@material-ui/core';
+import { List, ListItemIcon, ListItemText, Paper, Grid } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import PersonIcon from '@material-ui/icons/Person';
 import { useDispatch } from 'react-redux';
+import useForm from 'react-hook-form';
+import TextField from '@material-ui/core/TextField';
+
 import { addCharacterToListFetch } from '../../../redux/actions/charactersActions';
 
 const useStyles = makeStyles(() =>
@@ -67,16 +70,40 @@ const LoadingTrigger = ({ urlToFetch }: any) => {
 
 export default function ArticleList(props: any) {
   const classes = useStyles();
-  const { characters, onSelectCharacter, nextPageToFetch } = props;
+  const { register, handleSubmit } = useForm();
+  const { characters, onSubmit, onSelectCharacter, nextPageToFetch } = props;
 
   return (
-    <Paper className={classes.paper}>
-      <List component="nav" aria-label="main mailbox folders">
-        {characters.map((character: any, i: number) => (
-          <Character key={i} character={character} onCharacterSelect={onSelectCharacter} />
-        ))}
-        <LoadingTrigger urlToFetch={nextPageToFetch} />
-      </List>
-    </Paper>
+    <Fragment>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={12} md={12}>
+          <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+            <TextField
+              inputRef={register}
+              name="search"
+              id="standard-full-width"
+              label="Search Character"
+              style={{ margin: 8 }}
+              placeholder="Obi-Wan Kenobi"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true
+              }}
+            />
+          </form>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12}>
+          <Paper className={classes.paper}>
+            <List component="nav" aria-label="main mailbox folders">
+              {characters.map((character: any, i: number) => (
+                <Character key={i} character={character} onCharacterSelect={onSelectCharacter} />
+              ))}
+              {characters.length >= 10 && <LoadingTrigger urlToFetch={nextPageToFetch} />}
+            </List>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Fragment>
   );
 }

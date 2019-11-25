@@ -16,7 +16,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
 
 const drawerWidth = 240;
 
@@ -103,9 +102,6 @@ export default function Layout(props: ResponsiveDrawerProps) {
           <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} className={classes.menuButton}>
             <MenuIcon />
           </IconButton>
-          <form noValidate autoComplete="off">
-            <TextField id="standard-basic" label="Search" />
-          </form>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

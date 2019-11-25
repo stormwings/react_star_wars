@@ -31,6 +31,11 @@ class Character extends Component<IProps> {
     this.props.actions.characterFetch(url);
   };
 
+  onSearchSubmit = (formData: any) => {
+    const { search } = formData;
+    this.props.actions.characterListFetch(search);
+  };
+
   render() {
     const { classes } = this.props;
     const {
@@ -48,7 +53,14 @@ class Character extends Component<IProps> {
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12} md={6}>
                 {/* {loading && <h1>Loading</h1>} */}
-                {characters && <ArticleList characters={characters} onSelectCharacter={this.fetchCharacter} nextPageToFetch={nextPage} />}
+                {characters && (
+                  <ArticleList
+                    characters={characters}
+                    onSelectCharacter={this.fetchCharacter}
+                    onSubmit={this.onSearchSubmit}
+                    nextPageToFetch={nextPage}
+                  />
+                )}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
                 {/* {loading && <h1>Loading</h1>} */}
