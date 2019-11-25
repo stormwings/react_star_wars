@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Paper } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 
@@ -57,9 +57,10 @@ const Film = ({ url, classBullet }: any) => {
   if (!film) return <i></i>;
 
   return (
-    <Fragment>
+    // pendings
+    <i style={{ cursor: 'pointer' }} onClick={() => console.log(film)}>
       <Bull className={classBullet} /> {film} <br />
-    </Fragment>
+    </i>
   );
 };
 
