@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Paper } from '@material-ui/core';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     selectable: {
       color: '#3F51B5',
@@ -29,33 +29,74 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function Article() {
+const Bull = (props: any) => <span className={props.className}>• </span>;
+
+const DetailRow = (props: any) => {
+  const { className, color, variant, component, title, detail } = props;
+  return (
+    <Typography
+      className={className ? className : undefined}
+      color={color ? color : undefined}
+      variant={variant ? variant : undefined}
+      component={component ? component : undefined}
+    >
+      {title}: {detail ? detail : ''}
+    </Typography>
+  );
+};
+
+const Film = ({ url, classBullet }: any) => {
+  const [film, setFilm] = useState('');
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(res => setFilm(res.title));
+  });
+
+  if (!film) return <i></i>;
+
+  return (
+    <Fragment>
+      <Bull className={classBullet} /> {film} <br />
+    </Fragment>
+  );
+};
+
+const DetailList = (props: any) => {
+  const { className, classBullet, variant, component, films } = props;
+
+  return (
+    <Typography className={className} variant={variant} component={component}>
+      {films.map((filmUrl: any, j: number) => {
+        return <Film className={classBullet} key={j} url={filmUrl} />;
+      })}
+    </Typography>
+  );
+};
+
+export default function Article(props: any) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>• </span>;
+  const { eye_color, height, mass, name, films } = props.character;
 
   return (
     <Paper className={classes.paper}>
       <Card className={classes.card}>
         <CardContent>
-          <Typography variant="h5" component="h2">
-            Nombre: C3PO
-          </Typography>
+          <DetailRow title={'Nombre'} detail={name} variant={'h5'} component={'h2'} />
           <br />
-          <Typography className={classes.pos} color="textSecondary">
-            Color de ojos: Amarillo
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Altura: 167 cm
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Peso: 75 kg
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Peliculas en las que apareció:
-          </Typography>
-          <Typography className={classes.selectable} variant="body2" component="p">
-            {bull} A New Hope
-          </Typography>
+          <DetailRow title={'Color de ojos'} detail={eye_color} className={classes.pos} color={'textSecondary'} />
+          <DetailRow title={'Altura'} detail={height} className={classes.pos} color={'textSecondary'} />
+          <DetailRow title={'Peso'} detail={mass} className={classes.pos} color={'textSecondary'} />
+          <DetailRow title={'Peliculas en las que apareció'} className={classes.pos} color={'textSecondary'} />
+          <DetailList
+            films={films}
+            className={classes.selectable}
+            classBullet={classes.bullet}
+            color={'textSecondary'}
+            variant="body2"
+            component="p"
+          />
         </CardContent>
       </Card>
     </Paper>
