@@ -33,8 +33,9 @@ export default function(state = INITIAL_STATE, action: any) {
       return {
         ...state,
         characters,
-        nextPage,
-        loading: false
+        loading: false,
+        // if nextPage is null, keep the last
+        nextPage: nextPage ? nextPage : state.nextPage
       };
     }
     case types.GET_ADD_TO_CHARACTERS_FETCH_SUCCESSFUL: {
