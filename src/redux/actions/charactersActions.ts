@@ -8,11 +8,11 @@ export const getCharacterList = (payload: object) => ({ type: types.CHARACTERS_F
 export const errorCharacter = (payload: object) => ({ type: types.CHARACTER_ERROR, payload });
 export const characterLoading = () => ({ type: types.CHARACTER_LOADING });
 
-export const characterFetch = (characterId: number) => async (dispatch: Dispatch) => {
+export const characterFetch = (characterUrl: string) => async (dispatch: Dispatch) => {
   dispatch(characterLoading());
   try {
-    const { data: character } = await Axios.get(apiUrls.URL_GET_CHARACTER(characterId));
-    dispatch(getCharacter({ character }));
+    const { data } = await Axios.get(characterUrl);
+    dispatch(getCharacter({ character: { ...data } }));
   } catch (error) {
     const { message } = error;
     dispatch(errorCharacter({ error: message }));
@@ -22,8 +22,11 @@ export const characterFetch = (characterId: number) => async (dispatch: Dispatch
 export const characterListFetch = () => async (dispatch: Dispatch) => {
   dispatch(characterLoading());
   try {
-    const { data: characters } = await Axios.get(apiUrls.URL_GET_CHARACTERS);
-    dispatch(getCharacterList({ characters }));
+    const {
+      data: { results }
+    } = await Axios.get(apiUrls.URL_GET_CHARACTERS);
+
+    dispatch(getCharacterList({ characters: results }));
   } catch (error) {
     const { message } = error;
     dispatch(errorCharacter({ error: message }));

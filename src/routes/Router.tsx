@@ -10,9 +10,7 @@ const Router: FunctionComponent<BrowserRouterProps> = () => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/character" component={Character} />
-        {/* <Route exact path="/character/:id" component={Character} /> */}
         <Route exact path="/movie" component={Movie} />
-        {/* <Route exact path="/movie/:id" component={Movie} /> */}
         <Route component={NoMatch} />
       </Switch>
     </BrowserRouter>

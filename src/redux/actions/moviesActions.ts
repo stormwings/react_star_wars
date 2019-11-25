@@ -8,10 +8,10 @@ export const getMovieList = (payload: object) => ({ type: types.MOVIES_FETCH_SUC
 export const errorMovie = (payload: object) => ({ type: types.MOVIE_ERROR, payload });
 export const movieLoading = () => ({ type: types.MOVIE_LOADING });
 
-export const movieFetch = (movieId: number) => async (dispatch: Dispatch) => {
+export const movieFetch = (movieUrl: string) => async (dispatch: Dispatch) => {
   dispatch(movieLoading());
   try {
-    const { data: movie } = await Axios.get(apiUrls.URL_GET_MOVIE(movieId));
+    const { data: movie } = await Axios.get(movieUrl);
     dispatch(getMovie({ movie }));
   } catch (error) {
     const { message } = error;

@@ -2,8 +2,8 @@ import * as types from '../types';
 
 const INITIAL_STATE = {
   loading: false,
-  characters: {},
-  character: {},
+  characters: null as any,
+  character: null as any,
   message: '',
   error: ''
 };
