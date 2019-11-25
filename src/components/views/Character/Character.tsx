@@ -33,7 +33,12 @@ class Character extends Component<IProps> {
 
   render() {
     const { classes } = this.props;
-    const { characters, character, loading } = this.props.state;
+    const {
+      characters,
+      character,
+      //  loading,
+      nextPage
+    } = this.props.state;
 
     return (
       <Layout>
@@ -42,11 +47,11 @@ class Character extends Component<IProps> {
           <div className={classes.root}>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12} md={6}>
-                {loading && <h1>Loading</h1>}
-                {characters && <ArticleList characters={characters} onSelectCharacter={this.fetchCharacter} />}
+                {/* {loading && <h1>Loading</h1>} */}
+                {characters && <ArticleList characters={characters} onSelectCharacter={this.fetchCharacter} nextPageToFetch={nextPage} />}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-                {loading && <h1>Loading</h1>}
+                {/* {loading && <h1>Loading</h1>} */}
                 {character && <Article character={character} />}
               </Grid>
             </Grid>
