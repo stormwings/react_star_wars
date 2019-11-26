@@ -31,6 +31,10 @@ class Character extends Component<IProps> {
     this.props.actions.characterFetch(url);
   };
 
+  fetchMoreCharacters = (url: string) => {
+    this.props.actions.addCharacterToListFetch(url);
+  };
+
   onSearchSubmit = (formData: any) => {
     const { search } = formData;
     this.props.actions.characterListFetch(search);
@@ -56,6 +60,7 @@ class Character extends Component<IProps> {
                 {characters && (
                   <ArticleList
                     characters={characters}
+                    fetchMoreCharacters={this.fetchMoreCharacters}
                     onSelectCharacter={this.fetchCharacter}
                     onSearch={this.onSearchSubmit}
                     nextPageToFetch={nextPage}
