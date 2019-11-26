@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 
 import Layout from '../Layout/Layout';
-import ArticleList from '../../smart/List/List';
+import ArticleList from '../../smart/ArticleList/ArticleList';
 import Article from '../../smart/Article/Article';
 
 import * as actions from '../../../redux/actions/charactersActions';
@@ -57,7 +57,7 @@ class Character extends Component<IProps> {
                   <ArticleList
                     characters={characters}
                     onSelectCharacter={this.fetchCharacter}
-                    onSubmit={this.onSearchSubmit}
+                    onSearch={this.onSearchSubmit}
                     nextPageToFetch={nextPage}
                   />
                 )}
