@@ -11,8 +11,8 @@ export const movieLoading = () => ({ type: types.MOVIE_LOADING });
 export const movieFetch = (movieUrl: string) => async (dispatch: Dispatch) => {
   dispatch(movieLoading());
   try {
-    const { data: movie } = await Axios.get(movieUrl);
-    dispatch(getMovie({ movie }));
+    const { data } = await Axios.get(movieUrl);
+    dispatch(getMovie({ movie: { ...data } }));
   } catch (error) {
     const { message } = error;
     dispatch(errorMovie({ error: message }));
@@ -22,8 +22,10 @@ export const movieFetch = (movieUrl: string) => async (dispatch: Dispatch) => {
 export const movieListFetch = () => async (dispatch: Dispatch) => {
   dispatch(movieLoading());
   try {
-    const { data: movies } = await Axios.get(apiUrls.URL_GET_MOVIES);
-    dispatch(getMovieList({ movies }));
+    const {
+      data: { results }
+    } = await Axios.get(apiUrls.URL_GET_MOVIES);
+    dispatch(getMovieList({ movies: results }));
   } catch (error) {
     const { message } = error;
     dispatch(errorMovie({ error: message }));
