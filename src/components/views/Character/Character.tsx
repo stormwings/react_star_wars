@@ -7,6 +7,8 @@ import { Dispatch, bindActionCreators } from 'redux';
 import Layout from '../Layout/Layout';
 import ArticleList from '../../smart/ArticleList/ArticleList';
 import Article from '../../smart/Article/Article';
+import Animation from '../../dumb/Animation/Animation';
+import CoverImage from '../../dumb/CoverImage/CoverImage';
 
 import * as actions from '../../../redux/actions/charactersActions';
 
@@ -26,6 +28,9 @@ class Character extends Component<IProps> {
   componentDidMount() {
     this.props.actions.characterListFetch();
   }
+  componentWillUnmount() {
+    this.props.actions.characterUnmount();
+  }
 
   fetchCharacter = (url: string) => {
     this.props.actions.characterFetch(url);
@@ -42,12 +47,23 @@ class Character extends Component<IProps> {
 
   render() {
     const { classes } = this.props;
-    const {
-      characters,
-      character,
-      //  loading,
-      nextPage
-    } = this.props.state;
+    const { characters, character, loading, nextPage, error } = this.props.state;
+
+    if (error) {
+      return (
+        <Layout>
+          <Animation animation={'500'} style={{ marginTop: '30px', width: '100%' }} />
+        </Layout>
+      );
+    }
+
+    if (loading && !characters) {
+      return (
+        <Layout>
+          <Animation animation={'bb8'} style={{ marginTop: '30px', width: '100%' }} />
+        </Layout>
+      );
+    }
 
     return (
       <Layout>
@@ -56,7 +72,6 @@ class Character extends Component<IProps> {
           <div className={classes.root}>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12} md={6}>
-                {/* {loading && <h1>Loading</h1>} */}
                 {characters && (
                   <ArticleList
                     characters={characters}
@@ -68,7 +83,8 @@ class Character extends Component<IProps> {
                 )}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-                {/* {loading && <h1>Loading</h1>} */}
+                {!character && loading && <Animation animation={'bb8'} />}
+                {!character && !loading && <CoverImage />}
                 {character && <Article character={character} />}
               </Grid>
             </Grid>

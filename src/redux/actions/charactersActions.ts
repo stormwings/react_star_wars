@@ -9,6 +9,7 @@ export const getCharactersSearched = (payload: object) => ({ type: types.CHARACT
 export const getAddToCharacterList = (payload: object) => ({ type: types.GET_ADD_TO_CHARACTERS_FETCH_SUCCESSFUL, payload });
 export const errorCharacter = (payload: object) => ({ type: types.CHARACTER_ERROR, payload });
 export const characterLoading = () => ({ type: types.CHARACTER_LOADING });
+export const characterUnmount = () => ({ type: types.CHARACTER_UNMOUNT });
 
 export const characterFetch = (characterUrl: string) => async (dispatch: Dispatch) => {
   dispatch(characterLoading());
