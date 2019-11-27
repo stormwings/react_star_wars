@@ -1,9 +1,9 @@
 import React, { StatelessComponent } from 'react';
+import Layout from '../../views/Layout/Layout';
+import Animation from '../Animation/Animation';
 
 export const NoMatch: StatelessComponent<{ location: any }> = ({ location }) => (
-  <div>
-    <h3>
-      No match for <code>{location.pathname}</code>
-    </h3>
-  </div>
+  <Layout>
+    <Animation animation={'404'} style={{ marginTop: '40px', width: '100%' }} />
+  </Layout>
 );
