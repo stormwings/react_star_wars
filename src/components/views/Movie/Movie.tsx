@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import { Dispatch, bindActionCreators } from 'redux';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { Dispatch, bindActionCreators } from 'redux';
 
 import Layout from '../Layout/Layout';
 import MovieList from '../../smart/MovieList/MovieList';
-// import MovieDetail from '../../smart/MovieDetail/MovieDetail';
+import MovieDetail from '../../smart/MovieDetail/MovieDetail';
 
 import * as actions from '../../../redux/actions/moviesActions';
 
@@ -50,7 +50,7 @@ class Movie extends Component<IProps> {
                 {movies && <MovieList movies={movies} onSelectMovie={this.fetchMovie} />}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-                {/* {movie && <MovieDetail movie={movie} />} */}
+                {movie && <MovieDetail movie={movie} />}
               </Grid>
             </Grid>
           </div>
