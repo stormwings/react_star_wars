@@ -22,10 +22,18 @@ interface IProps {
   actions: any;
   state: any;
   classes: any;
+  location: any;
 }
 
 class Movie extends Component<IProps> {
   componentDidMount() {
+    // fetch movie from redirect
+    const { state } = this.props.location;
+    if (state) {
+      const { url } = state.film;
+      this.fetchMovie(url);
+    }
+    // fetch all movies list
     this.props.actions.movieListFetch();
   }
   componentWillUnmount() {

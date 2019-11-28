@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Paper } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -46,20 +47,31 @@ const DetailRow = (props: any) => {
 };
 
 const Film = ({ url, classBullet }: any) => {
-  const [film, setFilm] = useState('');
+  const [film, setFilm] = useState('') as any;
+  const history = useHistory();
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
-      .then(res => setFilm(res.title));
+      .then(res => setFilm(res));
   });
 
   if (!film) return <i></i>;
 
   return (
-    // pendings
-    <i style={{ cursor: 'pointer' }} onClick={() => console.log(film)}>
-      <Bull className={classBullet} /> {film} <br />
+    // redirect to movie
+    <i
+      style={{ cursor: 'pointer' }}
+      onClick={() =>
+        history.push({
+          pathname: '/movie',
+          state: {
+            film
+          }
+        })
+      }
+    >
+      <Bull className={classBullet} /> {film.title} <br />
     </i>
   );
 };
