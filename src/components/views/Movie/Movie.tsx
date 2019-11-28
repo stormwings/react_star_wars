@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import Layout from '../Layout/Layout';
 import MovieList from '../../smart/MovieList/MovieList';
 import MovieDetail from '../../smart/MovieDetail/MovieDetail';
+import CoverImage from '../../dumb/CoverImage/CoverImage';
+import Animation from '../../dumb/Animation/Animation';
 
 import * as actions from '../../../redux/actions/moviesActions';
 
@@ -26,6 +28,9 @@ class Movie extends Component<IProps> {
   componentDidMount() {
     this.props.actions.movieListFetch();
   }
+  componentWillUnmount() {
+    this.props.actions.movieUnmount();
+  }
 
   fetchMovie = (url: string) => {
     this.props.actions.movieFetch(url);
@@ -33,11 +38,23 @@ class Movie extends Component<IProps> {
 
   render() {
     const { classes } = this.props;
-    const {
-      movies,
-      movie
-      //  loading,
-    } = this.props.state;
+    const { movies, movie, loading, error } = this.props.state;
+
+    if (error) {
+      return (
+        <Layout>
+          <Animation animation={'500'} style={{ marginTop: '30px', width: '100%' }} />
+        </Layout>
+      );
+    }
+
+    if (loading && !movies) {
+      return (
+        <Layout>
+          <Animation animation={'bb8'} style={{ marginTop: '30px', width: '100%' }} />
+        </Layout>
+      );
+    }
 
     return (
       <Layout>
@@ -46,10 +63,11 @@ class Movie extends Component<IProps> {
           <div className={classes.root}>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12} md={6}>
-                {/* {loading && <h1>Loading</h1>} */}
                 {movies && <MovieList movies={movies} onSelectMovie={this.fetchMovie} />}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
+                {!movie && loading && <Animation animation={'bb8'} />}
+                {!movie && !loading && <CoverImage />}
                 {movie && <MovieDetail movie={movie} />}
               </Grid>
             </Grid>

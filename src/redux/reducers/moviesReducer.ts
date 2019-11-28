@@ -5,17 +5,21 @@ const INITIAL_STATE = {
   movies: null as any,
   movie: null as any,
   message: '',
-  error: ''
+  error: false
 };
 
 export default function(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case types.MOVIE_ERROR: {
       const { error } = action.payload;
-      return { ...state, error, loading: false };
+      console.warn(error);
+      return { ...state, error: true, loading: false };
     }
     case types.MOVIE_LOADING: {
-      return { ...state, loading: true };
+      return { ...state, loading: true, movie: null };
+    }
+    case types.MOVIE_UNMOUNT: {
+      return { ...INITIAL_STATE };
     }
     case types.MOVIES_FETCH_SUCCESSFUL: {
       const { movies } = action.payload;

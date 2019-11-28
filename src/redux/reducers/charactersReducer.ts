@@ -13,6 +13,7 @@ export default function(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case types.CHARACTER_ERROR: {
       const { error } = action.payload;
+      console.warn(error);
       return { ...state, error: true, loading: false };
     }
     case types.CHARACTER_LOADING: {

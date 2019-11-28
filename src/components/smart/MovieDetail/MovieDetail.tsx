@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Card, CardContent, Typography, Paper } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -54,7 +55,7 @@ const Article = ({ url, classBullet }: any) => {
       .then(res => setArticle(res.name));
   });
 
-  if (!article) return <i></i>;
+  if (!article) return <CircularProgress style={{ margin: '10px' }} />;
 
   return (
     <i style={{ cursor: 'pointer' }} onClick={() => console.log(article)}>
