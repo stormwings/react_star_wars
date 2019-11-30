@@ -22,6 +22,7 @@ export default function ArticleList(props: any) {
   const { register, handleSubmit } = useForm();
   const { characters, onSearch, onSelectCharacter, nextPageToFetch, fetchMoreCharacters } = props;
   const addCharacterToList = () => fetchMoreCharacters(nextPageToFetch);
+  console.log(nextPageToFetch)
 
   return (
     <Fragment>
@@ -35,7 +36,7 @@ export default function ArticleList(props: any) {
               {characters.map((character: any, i: number) => (
                 <CharacterRow key={i} character={character} onCharacterSelect={onSelectCharacter} />
               ))}
-              {characters.length >= 10 && <LoadingTrigger triggerAction={addCharacterToList} />}
+              {characters.length >= 10 && nextPageToFetch && <LoadingTrigger triggerAction={addCharacterToList} />}
             </List>
           </Paper>
         </Grid>
