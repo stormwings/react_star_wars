@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography, Paper } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router';
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, Typography, Paper } from "@material-ui/core";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles(() =>
   createStyles({
     selectable: {
-      color: '#3F51B5',
+      color: "#3F51B5",
       fontWeight: 600
     },
     card: {
-      minWidth: 275,
-      maxHeight: 500,
-      boxShadow: 'none'
+      minWidth: "50vh",
+      height: "50vh",
+      boxShadow: "none"
     },
     bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)'
+      display: "inline-block",
+      margin: "0 2px",
+      transform: "scale(0.8)"
     },
     pos: {
       marginBottom: 12
     },
     paper: {
-      maxHeight: '255px',
-      overflow: 'auto',
-      boxShadow: 'none'
+      maxHeight: "45vh",
+      overflow: "auto",
+      boxShadow: "none"
     }
   })
 );
@@ -41,13 +41,13 @@ const DetailRow = (props: any) => {
       variant={variant ? variant : undefined}
       component={component ? component : undefined}
     >
-      {title}: {detail ? detail : ''}
+      {title}: {detail ? detail : ""}
     </Typography>
   );
 };
 
 const Film = ({ url, classBullet }: any) => {
-  const [film, setFilm] = useState('') as any;
+  const [film, setFilm] = useState("") as any;
   const history = useHistory();
 
   useEffect(() => {
@@ -61,10 +61,10 @@ const Film = ({ url, classBullet }: any) => {
   return (
     // redirect to movie
     <i
-      style={{ cursor: 'pointer' }}
+      style={{ cursor: "pointer" }}
       onClick={() =>
         history.push({
-          pathname: '/movie',
+          pathname: "/movie",
           state: {
             film
           }
@@ -96,17 +96,41 @@ export default function Article(props: any) {
     <Paper className={classes.paper}>
       <Card className={classes.card}>
         <CardContent>
-          <DetailRow title={'Nombre'} detail={name} variant={'h5'} component={'h2'} />
+          <DetailRow
+            title={"Nombre"}
+            detail={name}
+            variant={"h5"}
+            component={"h2"}
+          />
           <br />
-          <DetailRow title={'Color de ojos'} detail={eye_color} className={classes.pos} color={'textSecondary'} />
-          <DetailRow title={'Altura'} detail={height} className={classes.pos} color={'textSecondary'} />
-          <DetailRow title={'Peso'} detail={mass} className={classes.pos} color={'textSecondary'} />
-          <DetailRow title={'Peliculas en las que apareció'} className={classes.pos} color={'textSecondary'} />
+          <DetailRow
+            title={"Color de ojos"}
+            detail={eye_color}
+            className={classes.pos}
+            color={"textSecondary"}
+          />
+          <DetailRow
+            title={"Altura"}
+            detail={height}
+            className={classes.pos}
+            color={"textSecondary"}
+          />
+          <DetailRow
+            title={"Peso"}
+            detail={mass}
+            className={classes.pos}
+            color={"textSecondary"}
+          />
+          <DetailRow
+            title={"Peliculas en las que apareció"}
+            className={classes.pos}
+            color={"textSecondary"}
+          />
           <DetailList
             films={films}
             className={classes.selectable}
             classBullet={classes.bullet}
-            color={'textSecondary'}
+            color={"textSecondary"}
             variant="body2"
             component="p"
           />

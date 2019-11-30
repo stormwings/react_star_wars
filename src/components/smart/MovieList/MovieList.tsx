@@ -8,7 +8,7 @@ import MovieRow from "../../dumb/MovieRow/MovieRow";
 const useStyles = makeStyles(() =>
   createStyles({
     paper: {
-      maxHeight: "255px",
+      maxHeight: "36vh",
       overflow: "auto",
       boxShadow: "none"
     }
@@ -58,19 +58,21 @@ export default function MovieList({ movies, onSelectMovie }: any) {
     <Fragment>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12} md={12}>
-          <TextField
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
-            name="search"
-            id="standard-full-width"
-            label="Search Movie"
-            style={{ margin: 8 }}
-            placeholder="Revenge of the Sith"
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
+          <div style={{ backgroundColor: "white", height: "8vh" }}>
+            <TextField
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
+              name="search"
+              id="standard-full-width"
+              label="Search Movie"
+              style={{ margin: 8, width: "97%" }}
+              placeholder="Revenge of the Sith"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true
+              }}
+            />
+          </div>
         </Grid>
         <Grid item xs={12} sm={12} md={12}>
           <Paper className={classes.paper}>

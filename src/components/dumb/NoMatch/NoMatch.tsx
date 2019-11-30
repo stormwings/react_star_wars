@@ -1,11 +1,17 @@
 import React, { StatelessComponent } from "react";
 import Layout from "../../views/Layout/Layout";
-import Animation from "../Animation/Animation";
+import image from "./404.png";
 
-export const NoMatch: StatelessComponent<{ location: any }> = ({
-  location
-}) => (
+export const NoMatch: StatelessComponent = () => (
   <Layout>
-    <Animation animation={"404"} style={{ marginTop: "40px", width: "100%" }} />
+    <div
+      style={{
+        margin: "auto",
+        paddingTop: "29vh",
+        height: "100vh"
+      }}
+    >
+      <img style={{ width: "70%" }} src={image} />
+    </div>
   </Layout>
 );

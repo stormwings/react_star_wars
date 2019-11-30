@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
-import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import { Dispatch, bindActionCreators } from 'redux';
+import React, { Component } from "react";
+import { Grid } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import { Dispatch, bindActionCreators } from "redux";
 
-import Layout from '../Layout/Layout';
-import ArticleList from '../../smart/ArticleList/ArticleList';
-import Article from '../../smart/Article/Article';
-import Animation from '../../dumb/Animation/Animation';
-import CoverImage from '../../dumb/CoverImage/CoverImage';
+import Layout from "../Layout/Layout";
+import ArticleList from "../../smart/ArticleList/ArticleList";
+import Article from "../../smart/Article/Article";
+import Animation from "../../dumb/Animation/Animation";
+import CoverImage from "../../dumb/CoverImage/CoverImage";
 
-import * as actions from '../../../redux/actions/charactersActions';
+import * as actions from "../../../redux/actions/charactersActions";
 
 const styles = {
-  root: { height: '500px', margin: '10px' },
-  toolbar: { marginTop: '70px' },
+  root: {
+    height: "50vh",
+    padding: "0 5px"
+  },
+  toolbar: { marginTop: "70px" },
   content: { flexGrow: 1 }
 };
 
@@ -47,12 +50,21 @@ class Character extends Component<IProps> {
 
   render() {
     const { classes } = this.props;
-    const { characters, character, loading, nextPage, error } = this.props.state;
+    const {
+      characters,
+      character,
+      loading,
+      nextPage,
+      error
+    } = this.props.state;
 
     if (error) {
       return (
         <Layout>
-          <Animation animation={'500'} style={{ marginTop: '30px', width: '100%' }} />
+          <Animation
+            animation={"500"}
+            style={{ marginTop: "30px", width: "100%" }}
+          />
         </Layout>
       );
     }
@@ -60,7 +72,10 @@ class Character extends Component<IProps> {
     if (loading && !characters) {
       return (
         <Layout>
-          <Animation animation={'bb8'} style={{ marginTop: '30px', width: '100%' }} />
+          <Animation
+            animation={"bb8"}
+            style={{ marginTop: "30px", width: "100%" }}
+          />
         </Layout>
       );
     }
@@ -83,7 +98,7 @@ class Character extends Component<IProps> {
                 )}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-                {!character && loading && <Animation animation={'bb8'} />}
+                {!character && loading && <Animation animation={"bb8"} />}
                 {!character && !loading && <CoverImage />}
                 {character && <Article character={character} />}
               </Grid>
@@ -96,7 +111,12 @@ class Character extends Component<IProps> {
 }
 
 const mapStateToProps = (state: any) => ({ state: state.characters });
-const mapDispatchToProps = (dispatch: Dispatch) => ({ actions: bindActionCreators(actions, dispatch) });
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  actions: bindActionCreators(actions, dispatch)
+});
 
 const CharacterWithStyles = withStyles(styles)(Character);
-export default connect(mapStateToProps, mapDispatchToProps)(CharacterWithStyles);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CharacterWithStyles);

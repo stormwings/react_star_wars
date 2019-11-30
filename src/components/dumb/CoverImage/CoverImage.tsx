@@ -1,16 +1,16 @@
-import React from 'react';
-import jedi from './jedi.png';
-import sith from './sith.png';
+import React from "react";
+import jedi from "./jedi.png";
+import sith from "./sith.png";
 
 export default function ShowImage(props: any) {
   const { image } = props;
   let picture;
 
   switch (image) {
-    case 'sith':
+    case "sith":
       picture = sith;
       break;
-    case 'jedi':
+    case "jedi":
       picture = jedi;
       break;
 
@@ -20,7 +20,7 @@ export default function ShowImage(props: any) {
   }
 
   return (
-    <div style={{ backgroundColor: 'white' }}>
+    <div style={{ backgroundColor: "white", height: "45vh" }}>
       <img src={picture} alt="banner" />
     </div>
   );

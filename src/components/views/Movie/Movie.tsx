@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
-import { Grid } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Dispatch, bindActionCreators } from "redux";
+import { Grid } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 
-import Layout from '../Layout/Layout';
-import MovieList from '../../smart/MovieList/MovieList';
-import MovieDetail from '../../smart/MovieDetail/MovieDetail';
-import CoverImage from '../../dumb/CoverImage/CoverImage';
-import Animation from '../../dumb/Animation/Animation';
+import Layout from "../Layout/Layout";
+import MovieList from "../../smart/MovieList/MovieList";
+import MovieDetail from "../../smart/MovieDetail/MovieDetail";
+import CoverImage from "../../dumb/CoverImage/CoverImage";
+import Animation from "../../dumb/Animation/Animation";
 
-import * as actions from '../../../redux/actions/moviesActions';
+import * as actions from "../../../redux/actions/moviesActions";
 
 const styles = {
-  root: { height: '500px', margin: '10px' },
-  toolbar: { marginTop: '70px' },
+  root: { height: "50vh", padding: "0 5px" },
+  toolbar: { marginTop: "70px" },
   content: { flexGrow: 1 }
 };
 
@@ -51,7 +51,10 @@ class Movie extends Component<IProps> {
     if (error) {
       return (
         <Layout>
-          <Animation animation={'500'} style={{ marginTop: '30px', width: '100%' }} />
+          <Animation
+            animation={"500"}
+            style={{ marginTop: "30px", width: "100%" }}
+          />
         </Layout>
       );
     }
@@ -59,7 +62,10 @@ class Movie extends Component<IProps> {
     if (loading && !movies) {
       return (
         <Layout>
-          <Animation animation={'bb8'} style={{ marginTop: '30px', width: '100%' }} />
+          <Animation
+            animation={"bb8"}
+            style={{ marginTop: "30px", width: "100%" }}
+          />
         </Layout>
       );
     }
@@ -71,10 +77,12 @@ class Movie extends Component<IProps> {
           <div className={classes.root}>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12} md={6}>
-                {movies && <MovieList movies={movies} onSelectMovie={this.fetchMovie} />}
+                {movies && (
+                  <MovieList movies={movies} onSelectMovie={this.fetchMovie} />
+                )}
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-                {!movie && loading && <Animation animation={'bb8'} />}
+                {!movie && loading && <Animation animation={"bb8"} />}
                 {!movie && !loading && <CoverImage />}
                 {movie && <MovieDetail movie={movie} />}
               </Grid>
@@ -87,7 +95,9 @@ class Movie extends Component<IProps> {
 }
 
 const mapStateToProps = (state: any) => ({ state: state.movies });
-const mapDispatchToProps = (dispatch: Dispatch) => ({ actions: bindActionCreators(actions, dispatch) });
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  actions: bindActionCreators(actions, dispatch)
+});
 
 const MovieWithStyles = withStyles(styles)(Movie);
 export default connect(mapStateToProps, mapDispatchToProps)(MovieWithStyles);
