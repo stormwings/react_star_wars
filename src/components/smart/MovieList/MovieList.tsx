@@ -15,6 +15,23 @@ const useStyles = makeStyles(() =>
   })
 );
 
+// export const useSearchArticles = (articles: any) => {
+//   const [query, setQuery] = useState("");
+//   const [filteredArticles, setFilteredArticles] = useState(articles);
+
+//   useMemo(() => {
+//     const result = articles.filter((article: any) => {
+//       return `${article.firstName} ${article.lastName}`
+//         .toLowerCase()
+//         .includes(query.toLowerCase());
+//     });
+
+//     setFilteredArticles(result);
+//   }, [articles, query]);
+
+//   return [query, setQuery, filteredArticles];
+// };
+
 export const useFilterArticles = (initialArticles: any) => {
   const [articleList, filterArticles] = useState(initialArticles);
 
