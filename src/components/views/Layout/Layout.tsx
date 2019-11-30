@@ -5,12 +5,12 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-import TheatersIcon from "@material-ui/icons/Theaters";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import PersonIcon from "@material-ui/icons/Person";
+import stormtrooper from "./../../../assets/storm.svg";
+import star from "./../../../assets/death-star.svg";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -40,7 +40,8 @@ const useStyles = makeStyles((theme: Theme) =>
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth
       },
-      boxShadow: "none"
+      boxShadow: "none",
+      backgroundColor: "#282c34"
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -90,13 +91,17 @@ export default function Layout(props: ResponsiveDrawerProps) {
           onClick={() => history.push("/character")}
         >
           <ListItemIcon>
-            <PersonIcon />
+            <div style={{ width: "25px" }}>
+              <img src={stormtrooper} alt="myicon" style={{ width: "100%" }} />
+            </div>
           </ListItemIcon>
           <ListItemText primary={"Characters"} />
         </ListItem>
         <ListItem button key={"Movies"} onClick={() => history.push("/movie")}>
           <ListItemIcon>
-            <TheatersIcon />
+            <div style={{ width: "25px" }}>
+              <img src={star} alt="myicon" style={{ width: "100%" }} />
+            </div>
           </ListItemIcon>
           <ListItemText primary={"Movies"} />
         </ListItem>

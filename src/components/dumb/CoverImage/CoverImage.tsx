@@ -20,7 +20,7 @@ export default function ShowImage(props: any) {
   }
 
   return (
-    <div style={{ backgroundColor: "white", height: "45vh" }}>
+    <div style={{ backgroundColor: "white", height: "45vh", paddingTop: "5%" }}>
       <img src={picture} alt="banner" />
     </div>
   );
