@@ -1,16 +1,16 @@
-import React, { Fragment, useState } from 'react';
-import { List, Paper, Grid } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import React, { Fragment, useState } from "react";
+import { List, Paper, Grid } from "@material-ui/core";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 
-import MovieRow from '../../dumb/MovieRow/MovieRow';
+import MovieRow from "../../dumb/MovieRow/MovieRow";
 
 const useStyles = makeStyles(() =>
   createStyles({
     paper: {
-      maxHeight: '255px',
-      overflow: 'auto',
-      boxShadow: 'none'
+      maxHeight: "255px",
+      overflow: "auto",
+      boxShadow: "none"
     }
   })
 );
