@@ -21,7 +21,7 @@ export default function ShowImage(props: any) {
 
   return (
     <div style={{ backgroundColor: 'white' }}>
-      <img src={picture} alt="cover image" />
+      <img src={picture} alt="banner" />
     </div>
   );
 }
