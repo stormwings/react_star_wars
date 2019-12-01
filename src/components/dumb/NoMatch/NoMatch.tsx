@@ -11,7 +11,7 @@ export const NoMatch: StatelessComponent = () => (
         height: "100vh"
       }}
     >
-      <img style={{ width: "70%" }} src={image} />
+      <img style={{ width: "70%" }} src={image} alt="notfound" />
     </div>
   </Layout>
 );

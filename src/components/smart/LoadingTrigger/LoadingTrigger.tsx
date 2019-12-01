@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React, { useEffect, useState, useRef } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // hook to define if the component its visible
 const useCheckElementInViewport = () => {
@@ -32,7 +32,7 @@ export default function LoadingTrigger({ triggerAction }: any) {
 
   return (
     <div ref={$element}>
-      <CircularProgress style={{ margin: '10px' }} />
+      <CircularProgress style={{ margin: "10px", color: "#282C34" }} />
     </div>
   );
 }

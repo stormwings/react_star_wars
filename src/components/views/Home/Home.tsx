@@ -11,7 +11,7 @@ export const Home: StatelessComponent = () => (
         height: "100vh"
       }}
     >
-      <img style={{ width: "70%" }} src={image} />
+      <img style={{ width: "70%" }} src={image} alt="homepage" />
     </div>
   </Layout>
 );

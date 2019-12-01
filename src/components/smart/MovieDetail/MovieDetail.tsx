@@ -33,13 +33,22 @@ const useStyles = makeStyles(() =>
 const Bull = (props: any) => <span className={props.className}>• </span>;
 
 const DetailRow = (props: any) => {
-  const { className, color, variant, component, title, detail } = props;
+  const {
+    className,
+    color,
+    variant,
+    component,
+    title,
+    detail,
+    textColor
+  } = props;
   return (
     <Typography
       className={className ? className : undefined}
       color={color ? color : undefined}
       variant={variant ? variant : undefined}
       component={component ? component : undefined}
+      style={{ color: textColor ? textColor : "" }}
     >
       {title}: {detail ? detail : ""}
     </Typography>
@@ -69,7 +78,9 @@ const DetailList = (props: any) => {
 
   return (
     <Fragment>
-      <Typography style={{ margin: "5px" }}>{title}</Typography>
+      <Typography style={{ margin: "5px", fontWeight: "bolder" }}>
+        {title}
+      </Typography>
       <Typography className={className} variant={variant} component={component}>
         {articles.map((articleUrl: any, j: number) => {
           return <Article classBullet={classBullet} key={j} url={articleUrl} />;
@@ -87,11 +98,7 @@ export default function MovieDetail(props: any) {
     director,
     producer,
     release_date,
-    characters,
-    planets,
-    starships,
-    vehicles,
-    species
+    planets
   } = props.movie;
 
   return (
@@ -118,62 +125,26 @@ export default function MovieDetail(props: any) {
             color={"textSecondary"}
           />
           <DetailRow
-            title={"Release Date"}
+            title={"Estreno"}
             detail={release_date}
             className={classes.pos}
             color={"textSecondary"}
           />
-          {/* <DetailRow title={'Descripción'} detail={opening_crawl} className={classes.pos} color={'textSecondary'} /> */}
+          {/* <DetailRow
+            title={"Opening"}
+            detail={opening_crawl}
+            className={classes.pos}
+            color={"textSecondary"}
+            textColor={"black"}
+          /> */}
           <DetailList
-            title={"Planets"}
+            title={"Planetas"}
             articles={planets}
             className={classes.selectable}
             classBullet={classes.bullet}
             color={"textSecondary"}
             variant="body2"
             component="p"
-          />
-          <DetailList
-            title={"Starships"}
-            articles={starships}
-            className={classes.selectable}
-            classBullet={classes.bullet}
-            color={"textSecondary"}
-            variant="body2"
-            component="p"
-          />
-          <DetailList
-            title={"Vehicles"}
-            articles={vehicles}
-            className={classes.selectable}
-            classBullet={classes.bullet}
-            color={"textSecondary"}
-            variant="body2"
-            component="p"
-          />
-          <DetailList
-            title={"Species"}
-            articles={species}
-            className={classes.selectable}
-            classBullet={classes.bullet}
-            color={"textSecondary"}
-            variant="body2"
-            component="p"
-          />
-          <DetailList
-            title={"Characters"}
-            articles={characters}
-            className={classes.selectable}
-            classBullet={classes.bullet}
-            color={"textSecondary"}
-            variant="body2"
-            component="p"
-          />
-          <DetailRow
-            title={"Opening Crawl"}
-            detail={opening_crawl}
-            className={classes.pos}
-            color={"textSecondary"}
           />
         </CardContent>
       </Card>

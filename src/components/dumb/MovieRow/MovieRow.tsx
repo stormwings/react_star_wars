@@ -1,7 +1,7 @@
-import React from 'react';
-import { ListItemIcon, ListItemText } from '@material-ui/core';
-import ListItem from '@material-ui/core/ListItem';
-import PersonIcon from '@material-ui/icons/Person';
+import React from "react";
+import { ListItemIcon, ListItemText } from "@material-ui/core";
+import ListItem from "@material-ui/core/ListItem";
+import MovieFilterIcon from "@material-ui/icons/MovieFilter";
 
 export default function MovieRow(props: any) {
   const {
@@ -11,7 +11,7 @@ export default function MovieRow(props: any) {
   return (
     <ListItem button onClick={() => onMovieSelect(url)}>
       <ListItemIcon>
-        <PersonIcon />
+        <MovieFilterIcon />
       </ListItemIcon>
       <ListItemText primary={title} />
     </ListItem>
